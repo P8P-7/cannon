@@ -6,8 +6,8 @@
 #define PIN_COIL 0x06
 #define PIN_VALVE_BUTTON 0x07
 #define PIN_COIL_BUTTON 0x08
-#define PIN_JOYSTICK_X 0xA0
-#define PIN_JOYSTICK_Y 0xA1
+#define PIN_JOYSTICK_X A0
+#define PIN_JOYSTICK_Y A1
 
 #define SERVO_TURN 0x02
 #define SERVO_TILT 0x01
@@ -91,12 +91,12 @@ void stopAutoFire() {
 void setup() {
     pinMode(PIN_VALVE, OUTPUT);
     pinMode(PIN_COIL, OUTPUT);
-    
+
     pinMode(PIN_JOYSTICK_X, INPUT);
     pinMode(PIN_JOYSTICK_Y, INPUT);
     pinMode(PIN_VALVE_BUTTON, INPUT);
     pinMode(PIN_COIL_BUTTON, INPUT);
-  
+
     Dynamixel.begin(1000000, PIN_SERVO_DIRECTION);
     Dynamixel.setEndless(SERVO_TURN, ON);
     Dynamixel.setEndless(SERVO_TILT, ON);
@@ -116,7 +116,7 @@ void loop() {
         autoFireTimer.update();
         return;
     }
-    
+
     if (digitalRead(PIN_VALVE_BUTTON) == HIGH && digitalRead(PIN_COIL_BUTTON)) {
         autoFiring = true;
         autoFire();
@@ -133,4 +133,5 @@ void loop() {
     } else {
         fire();
     }
-} 
+}
+
